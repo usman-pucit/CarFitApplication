@@ -1,0 +1,12 @@
+//
+//  UAT.xcconfig
+//  CarFitApplication
+//
+//  Created by Muhammad Usman on 07/08/2020.
+//  Copyright © 2020 usman. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// System configuration settings will be here to configure application with different environment settings.
+
+LOG_ENABLED = true

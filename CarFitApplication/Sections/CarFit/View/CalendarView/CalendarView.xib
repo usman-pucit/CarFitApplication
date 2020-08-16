@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CalendarView" customModule="CarFit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqW-TH-EDX">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAQ-Da-bKP">
+                            <rect key="frame" x="20" y="8" width="101.5" height="34.5"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="25"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="GT8-nH-1Cp">
+                            <rect key="frame" x="316" y="8" width="78" height="32"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-X8-myJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="arrowRight"/>
+                                    <connections>
+                                        <action selector="arrowTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="tU1-kY-p4e"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUS-0u-T3s">
+                                    <rect key="frame" x="46" y="0.0" width="32" height="32"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="arrowLeft"/>
+                                    <connections>
+                                        <action selector="arrowTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="eDO-Ed-pUc"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LcM-Xa-afd">
+                            <rect key="frame" x="20" y="55" width="374" height="72"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="AcE-EE-Nyr">
+                                <size key="itemSize" width="40" height="70"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <cells/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="ddJ-Tf-dWd"/>
+                                <outlet property="delegate" destination="-1" id="qCu-rg-9ON"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="LcM-Xa-afd" secondAttribute="bottom" constant="8" id="17k-UB-b7H"/>
+                        <constraint firstItem="LAQ-Da-bKP" firstAttribute="leading" secondItem="wqW-TH-EDX" secondAttribute="leading" constant="20" id="6me-q6-QDY"/>
+                        <constraint firstItem="LcM-Xa-afd" firstAttribute="leading" secondItem="wqW-TH-EDX" secondAttribute="leading" constant="20" id="Jel-je-mWN"/>
+                        <constraint firstAttribute="trailing" secondItem="GT8-nH-1Cp" secondAttribute="trailing" constant="20" id="MsZ-2W-p1B"/>
+                        <constraint firstItem="LAQ-Da-bKP" firstAttribute="top" secondItem="wqW-TH-EDX" secondAttribute="top" constant="8" id="PPU-iy-wQZ"/>
+                        <constraint firstItem="GT8-nH-1Cp" firstAttribute="top" secondItem="wqW-TH-EDX" secondAttribute="top" constant="8" id="bll-Rm-KaG"/>
+                        <constraint firstItem="LcM-Xa-afd" firstAttribute="top" secondItem="GT8-nH-1Cp" secondAttribute="bottom" constant="15" id="dEe-Hx-Nd1"/>
+                        <constraint firstItem="GT8-nH-1Cp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LAQ-Da-bKP" secondAttribute="trailing" constant="20" id="gaL-9W-Sti"/>
+                        <constraint firstAttribute="trailing" secondItem="LcM-Xa-afd" secondAttribute="trailing" constant="20" id="jVo-6b-wo0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="wqW-TH-EDX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0Ls-Hn-HNQ"/>
+                <constraint firstItem="wqW-TH-EDX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="3ba-FL-yvF"/>
+                <constraint firstItem="wqW-TH-EDX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HPn-fx-5Vm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wqW-TH-EDX" secondAttribute="bottom" id="elQ-tT-u9f"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="daysCollectionView" destination="LcM-Xa-afd" id="Zrv-7h-p0M"/>
+                <outlet property="leftBtn" destination="IBc-X8-myJ" id="3uQ-9g-5Kf"/>
+                <outlet property="monthAndYear" destination="LAQ-Da-bKP" id="6eP-W9-GLJ"/>
+                <outlet property="rightBtn" destination="kUS-0u-T3s" id="Mi0-ch-CAF"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="-157.36607142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrowLeft" width="32" height="32"/>
+        <image name="arrowRight" width="32" height="32"/>
+    </resources>
+</document>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DayCell" id="gTV-IL-0wX" customClass="DayCell" customModule="CarFitApplication" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="40" height="70"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McM-Pi-ota">
+                        <rect key="frame" x="0.0" y="0.0" width="40" height="70"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaE-19-32o">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vv-79-NI0">
+                                        <rect key="frame" x="11.5" y="10" width="17.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.52941176469999995" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="RWX-6m-qsf"/>
+                                    <constraint firstItem="8Vv-79-NI0" firstAttribute="centerX" secondItem="SaE-19-32o" secondAttribute="centerX" id="aIs-3b-baa"/>
+                                    <constraint firstItem="8Vv-79-NI0" firstAttribute="centerY" secondItem="SaE-19-32o" secondAttribute="centerY" id="fGK-5A-urT"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sG2-id-ZqJ">
+                                <rect key="frame" x="7.5" y="45" width="25" height="17"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="SaE-19-32o" secondAttribute="trailing" id="A5B-9v-qTw"/>
+                            <constraint firstItem="sG2-id-ZqJ" firstAttribute="centerX" secondItem="SaE-19-32o" secondAttribute="centerX" id="DrW-Jr-YnX"/>
+                            <constraint firstAttribute="bottom" secondItem="sG2-id-ZqJ" secondAttribute="bottom" constant="8" id="EYy-jF-snz"/>
+                            <constraint firstItem="SaE-19-32o" firstAttribute="leading" secondItem="McM-Pi-ota" secondAttribute="leading" id="F6v-qh-bVV"/>
+                            <constraint firstItem="sG2-id-ZqJ" firstAttribute="top" secondItem="SaE-19-32o" secondAttribute="bottom" constant="5" id="khf-xE-fKT"/>
+                            <constraint firstItem="SaE-19-32o" firstAttribute="top" secondItem="McM-Pi-ota" secondAttribute="top" id="xMv-k9-AZP"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="McM-Pi-ota" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4kz-0B-yYF"/>
+                <constraint firstItem="McM-Pi-ota" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eFB-g6-g4P"/>
+                <constraint firstAttribute="bottom" secondItem="McM-Pi-ota" secondAttribute="bottom" id="psi-p3-6gI"/>
+                <constraint firstAttribute="trailing" secondItem="McM-Pi-ota" secondAttribute="trailing" id="udo-eU-H42"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="day" destination="8Vv-79-NI0" id="Vt1-9v-0xt"/>
+                <outlet property="dayView" destination="SaE-19-32o" id="Kbe-QA-pSv"/>
+                <outlet property="weekday" destination="sG2-id-ZqJ" id="hCt-e7-BEt"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>
+        </collectionViewCell>
+    </objects>
+</document>

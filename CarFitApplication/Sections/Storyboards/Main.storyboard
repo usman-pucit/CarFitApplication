@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J2g-BW-iyg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="CarFitApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M10-Bk-pgl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSM-Nc-Uim">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem id="DhX-3E-Ysn">
+                                                <barButtonItem key="rightBarButtonItem" image="calendar" id="btp-xY-6wR">
+                                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="calendarTapped:" destination="BYZ-38-t0r" id="lLk-1z-8iK"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="uSM-Nc-Uim" firstAttribute="leading" secondItem="M10-Bk-pgl" secondAttribute="leading" id="LF4-K1-xwL"/>
+                                    <constraint firstAttribute="bottom" secondItem="uSM-Nc-Uim" secondAttribute="bottom" id="R6h-Bf-R9G"/>
+                                    <constraint firstAttribute="trailing" secondItem="uSM-Nc-Uim" secondAttribute="trailing" id="kYO-fZ-Ijv"/>
+                                    <constraint firstAttribute="height" constant="88" id="z5X-uw-8ug"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0f-yn-c6Z">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8y5-5g-wfL">
+                                        <rect key="frame" x="0.0" y="-136" width="414" height="135"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="135" id="Y4u-Kb-PLB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.6588235294" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Gql-bW-MLW"/>
+                                    <constraint firstAttribute="trailing" secondItem="8y5-5g-wfL" secondAttribute="trailing" id="JOo-Jw-nxD"/>
+                                    <constraint firstAttribute="bottom" secondItem="8y5-5g-wfL" secondAttribute="bottom" constant="1" id="XlT-JV-WZi"/>
+                                    <constraint firstItem="8y5-5g-wfL" firstAttribute="leading" secondItem="X0f-yn-c6Z" secondAttribute="leading" id="fgd-GH-Jzp"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m1e-N8-4Vt">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Ury-3G-d9P"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="lbP-nf-i90"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.95294117647058818" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="X0f-yn-c6Z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0oh-cj-gSA"/>
+                            <constraint firstItem="M10-Bk-pgl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5J4-Jn-F4i"/>
+                            <constraint firstItem="M10-Bk-pgl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EWH-VD-EEH"/>
+                            <constraint firstItem="m1e-N8-4Vt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z1t-aD-Qq3"/>
+                            <constraint firstItem="m1e-N8-4Vt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZJv-PJ-wwN"/>
+                            <constraint firstItem="X0f-yn-c6Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eKd-oQ-zqc"/>
+                            <constraint firstItem="m1e-N8-4Vt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lDn-na-wcO"/>
+                            <constraint firstItem="M10-Bk-pgl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nfS-AG-sZy"/>
+                            <constraint firstItem="X0f-yn-c6Z" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uPr-O4-SB7"/>
+                            <constraint firstItem="m1e-N8-4Vt" firstAttribute="top" secondItem="M10-Bk-pgl" secondAttribute="bottom" id="wAe-QO-xzp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Today" id="jgy-Nm-3Nx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="sVU-s5-E5D">
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="calendar" destination="8y5-5g-wfL" id="0ac-Vz-7JB"/>
+                        <outlet property="calendarButton" destination="btp-xY-6wR" id="18a-Ve-doW"/>
+                        <outlet property="calendarView" destination="X0f-yn-c6Z" id="HFR-dj-rqt"/>
+                        <outlet property="calenderViewHeight" destination="Gql-bW-MLW" id="ya1-Lg-3Q5"/>
+                        <outlet property="navBar" destination="uSM-Nc-Uim" id="zF2-oN-t8a"/>
+                        <outlet property="tableViewTopConstraint" destination="wAe-QO-xzp" id="0UV-5u-Wgo"/>
+                        <outlet property="workOrderTableView" destination="m1e-N8-4Vt" id="JhI-5Q-m8O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="679.71014492753625" y="-125.22321428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="owl-yx-pAC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="J2g-BW-iyg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GoB-ld-Fsa">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Oao-Lg-e1h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CEr-G6-M4v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-230.43478260869566" y="-125.22321428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar" width="32" height="32"/>
+    </resources>
+</document>
