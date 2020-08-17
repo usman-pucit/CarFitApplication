@@ -1,33 +1,32 @@
 # CarFit Application
  
- CarFit application is a Car wash booking solution through iOS application. It envolves 3 characters in this business. The first one is CarFitClient that need to done their job for a car wash and he had placed an order for it, second one is a manager who is managing all such jobs and 
+ CarFit application is a Car wash booking solution with iOS application. 
 
 # Release Notes 
 
+### Main Components:
+- Language: Swift
+- MVVM architecture with Combine [Reference link](https://developer.apple.com/documentation/combine)
+- APIClientProtocol ( Currently for Mock API Services but can be extended for SOAP & Rest services).
+- Codable's 
+- MOCK scheme and environment.
+- Dependecncy Injections
+- Unit testing for ViewModel's
 
-## Application Main Components:
+### Focused Areas are:
 
-### Language: Swift
-### MVVM architecture + Combine
-### APIClientProtocol ( Currently for Mock API Services but can be extended for SOAP & Rest services).
-### Codable's 
-### MOCK scheme and environment.
-### Dependecncy Injections
-### Unit testing for ViewModel's
+- Generic components for reusability
+- SOLID principles
+- Application architecture 
+- Design patterns 
+- Testibility, Scalability and easy to understand and extend. 
+- MVVM with reactive programming(Combine Framework) to get data stream and propegation of changes at one place.
 
+### Improvement & Enhancement Areas:
 
-## Focused Areas are:
-
-### Generic components 
-### SOLID principles
-### Application architecture 
-### Design patterns 
-### Dependency Injections
-### Easy to understand, modifiable and structural code. 
-
-## Improvement & Enhancement Areas:
-
-### Test coverage including UI testing. 
-###  On project enhacement and project extension code can be sub divided into small factories, groups and units for an optimized solution.
+- Test coverage including UI testing. 
+- More schemes and environments as per need.
+- Network layer and data security layer.
+- TableView and CollectionView can be extended to a generic datasource to acheive reusibility.
 
 

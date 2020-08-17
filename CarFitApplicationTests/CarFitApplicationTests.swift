@@ -13,17 +13,17 @@ import XCTest
 class CarFitApplicationTests: XCTestCase {
     var homeViewModel: HomeViewModel!
     var cancelablle: AnyCancellable!
-    var ineractor: CarFitInteractor!
-    let apiClient = MockApiClient<CFSchedulesResponseModel>()
+    var interactor = CarFitInteractor(apiClient: MockApiClient())
+    let apiClient = MockApiClient()
     
     override func setUp() {
         homeViewModel = HomeViewModel(apiClient: apiClient)
+        interactor = CarFitInteractor(apiClient: apiClient)
     }
     
     override func tearDown() {
         homeViewModel = nil
         cancelablle = nil
-        ineractor = nil
         super.tearDown()
     }
     
@@ -48,31 +48,7 @@ class CarFitApplicationTests: XCTestCase {
         homeViewModel?.performRequestFromMock()
     }
     
-    // MARK: Test request function giving proper error with Live environment.
-    
-    /// As live API envrionment is not added and its just available for enhancement option so request must fail over it.
-    /// Test must fail and resturns an error.
-    
-    func testRequestFailureWithWrongEnvironment() {
-        let expectation = XCTestExpectation(description: "Date fetched failed")
-        
-        homeViewModel = HomeViewModel(apiClient: APIClient())
-        
-        cancelablle = homeViewModel?.$dataSource.sink(receiveValue: { response in
-            if response != nil {
-                XCTAssert(false, "Failed to fetch results")
-            }
-        })
-        
-        cancelablle = homeViewModel?.$error.sink(receiveValue: { error in
-            if error != nil {
-                expectation.fulfill()
-            }
-        })
-        
-        homeViewModel?.performRequestFromMock()
-    }
-    
+
     // MARK: Test request function giving proper error with wrong file name.
     
     /// Test must fail and resturns an error.
@@ -93,22 +69,6 @@ class CarFitApplicationTests: XCTestCase {
         })
         
         homeViewModel?.performRequestFromMock(fileName: "mock")
-    }
-    
-    // MARK: Test request function giving proper error with wrong interactor environment
-    
-    /// Test must fail and resturns an error.
-    
-    func testRequestFailureWithWrongInteractorEnvironment() {
-        let expectation = XCTestExpectation(description: "Date fetched failed")
-        
-        ineractor = CarFitInteractor(apiClient: APIClient())
-        
-        ineractor.performRequestFromMock(with: .mockFileName, onSuccess: { _ in
-            XCTAssert(false, "Failed to fetch results")
-        }) { _ in
-            expectation.fulfill()
-        }
     }
     
 }
