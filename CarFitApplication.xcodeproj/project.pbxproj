@@ -20,7 +20,6 @@
 		8E81F7CD24E0914200ACD674 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E81F7CC24E0914200ACD674 /* String.swift */; };
 		8E81F7CF24E0AF7700ACD674 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E81F7CE24E0AF7700ACD674 /* Double.swift */; };
 		8E89F3E224DF1CE40099BB41 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89F3E124DF1CE40099BB41 /* HomeViewModel.swift */; };
-		8E89F3E824DF25070099BB41 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89F3E724DF25070099BB41 /* APIClient.swift */; };
 		8E89F3EB24DF2D190099BB41 /* CarFitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89F3EA24DF2D190099BB41 /* CarFitInteractor.swift */; };
 		8EA0EF7024E0BE2D002576D7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0EF6F24E0BE2D002576D7 /* UIColor.swift */; };
 		8EC69D8624DCAC3300FD8497 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69D8524DCAC3300FD8497 /* AppDelegate.swift */; };
@@ -98,7 +97,6 @@
 		8E81F7CC24E0914200ACD674 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8E81F7CE24E0AF7700ACD674 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		8E89F3E124DF1CE40099BB41 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		8E89F3E724DF25070099BB41 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8E89F3EA24DF2D190099BB41 /* CarFitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarFitInteractor.swift; sourceTree = "<group>"; };
 		8EA0EF6F24E0BE2D002576D7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		8EB8E33D24E12AF40042AD91 /* CalenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
@@ -452,7 +450,6 @@
 			children = (
 				8EC69DEC24DCC05300FD8497 /* APIClientProtocol.swift */,
 				8EC69DF624DCC46300FD8497 /* MockApiClient.swift */,
-				8E89F3E724DF25070099BB41 /* APIClient.swift */,
 			);
 			path = DataHandler;
 			sourceTree = "<group>";
@@ -652,7 +649,6 @@
 				8EC69E1624DCC7D500FD8497 /* CFScheduledTaskModels.swift in Sources */,
 				8E05837A24E5150A000CD5A1 /* UIView.swift in Sources */,
 				8EC69E1524DCC7D500FD8497 /* CFScheduleInformationModel.swift in Sources */,
-				8E89F3E824DF25070099BB41 /* APIClient.swift in Sources */,
 				8E7D1AC524E01C5500A65A8E /* DatasourceContract.swift in Sources */,
 				8EC69DC124DCB16A00FD8497 /* BaseViewController.swift in Sources */,
 				8E7D27B324E0356A00A65A8E /* UIViewContract.swift in Sources */,

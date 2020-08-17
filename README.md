@@ -9,7 +9,7 @@
 
 ### Language: Swift
 ### MVVM architecture + Combine
-### APIClientProtocol ( Currently for Mock API Servies but can be extended for SOAP & Rest services).
+### APIClientProtocol ( Currently for Mock API Services but can be extended for SOAP & Rest services).
 ### Codable's 
 ### MOCK scheme and environment.
 ### Dependecncy Injections

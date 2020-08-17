@@ -2,8 +2,8 @@
 //  BaseCollectionViewCell.swift
 //  CarFitApplication
 //
-//  Created by Muhammad Usman on 12/08/2020.
-//  Copyright © 2020 usman. All rights reserved.
+//  Created by Usman on 12/08/2020.
+//  Copyright © 2020 usman-pucit All rights reserved.
 //
 
 import UIKit

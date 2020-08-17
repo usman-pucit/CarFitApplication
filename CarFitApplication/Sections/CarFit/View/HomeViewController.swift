@@ -55,7 +55,7 @@ class HomeViewController: BaseViewController, AlertDisplayer {
         super.viewDidLoad()
         
         // Initialize view model with required dependency of APIClientProtocol
-        self.viewModel = HomeViewModel(apiClient: MockApiClient<CFSchedulesResponseModel>())
+        self.viewModel = HomeViewModel(apiClient: MockApiClient())
         self.setupUI()
         self.onbindViewModel()
     }

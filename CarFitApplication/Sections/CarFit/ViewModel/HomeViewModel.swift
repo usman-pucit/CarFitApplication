@@ -2,8 +2,8 @@
 //  HomeViewModel.swift
 //  CarFitApplication
 //
-//  Created by Muhammad Usman on 08/08/2020.
-//  Copyright © 2020 usman. All rights reserved.
+//  Created by Usman on 08/08/2020.
+//  Copyright © 2020 usman-pucit All rights reserved.
 //
 
 import Combine
@@ -33,11 +33,14 @@ class HomeViewModel: ObservableObject {
     // MARK: - Function to perfom data request
     
     internal func performRequestFromMock(fileName: String = .mockFileName) {
-        interactor.performRequestFromMock(with: fileName, onSuccess: { response in
-            LogsManager.printLog(response.dictionary ?? [:])
-            self.dataSource = response
-        }) { error in
-            self.error = error
+        interactor.performRequestFromMock(with: fileName) { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let response):
+                strongSelf.dataSource = response
+            case .failure(let error):
+                strongSelf.error = error
+            }
         }
     }
 }

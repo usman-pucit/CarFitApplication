@@ -2,8 +2,8 @@
 //  CarFitInteractor.swift
 //  CarFitApplication
 //
-//  Created by Muhammad Usman on 08/08/2020.
-//  Copyright © 2020 usman. All rights reserved.
+//  Created by Usman on 08/08/2020.
+//  Copyright © 2020 usman-pucit All rights reserved.
 //
 
 import Foundation
@@ -25,7 +25,7 @@ class CarFitInteractor {
 
     // MARK: - Function to perform mock request
 
-    func performRequestFromMock(with fileName: String, onSuccess: @escaping (CFSchedulesResponseModel) -> (), onError: @escaping (APIError) -> ()) {
-        apiClient.performRequestFromMock(with: fileName, onSuccess: onSuccess, onError: onError)
+    func performRequestFromMock(with fileName: String, onResult: @escaping (Result<CFSchedulesResponseModel>) -> ()) {
+        apiClient.performRequestFromMock(with: fileName, onResult: onResult)
     }
 }
