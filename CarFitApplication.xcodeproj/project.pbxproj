@@ -22,15 +22,15 @@
 		8E89F3E224DF1CE40099BB41 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89F3E124DF1CE40099BB41 /* HomeViewModel.swift */; };
 		8E89F3EB24DF2D190099BB41 /* CarFitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89F3EA24DF2D190099BB41 /* CarFitInteractor.swift */; };
 		8EA0EF7024E0BE2D002576D7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0EF6F24E0BE2D002576D7 /* UIColor.swift */; };
+		8EB1616324EC71F1005ADEC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB1616224EC71F1005ADEC4 /* LaunchScreen.storyboard */; };
 		8EC69D8624DCAC3300FD8497 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69D8524DCAC3300FD8497 /* AppDelegate.swift */; };
 		8EC69D8824DCAC3300FD8497 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69D8724DCAC3300FD8497 /* SceneDelegate.swift */; };
 		8EC69D8F24DCAC3500FD8497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EC69D8E24DCAC3500FD8497 /* Assets.xcassets */; };
-		8EC69D9224DCAC3500FD8497 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC69D9024DCAC3500FD8497 /* LaunchScreen.storyboard */; };
 		8EC69D9D24DCAC3500FD8497 /* CarFitApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69D9C24DCAC3500FD8497 /* CarFitApplicationTests.swift */; };
 		8EC69DA824DCAC3500FD8497 /* CarFitApplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DA724DCAC3500FD8497 /* CarFitApplicationUITests.swift */; };
 		8EC69DB924DCAEFA00FD8497 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DB824DCAEFA00FD8497 /* Environment.swift */; };
 		8EC69DC124DCB16A00FD8497 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DC024DCB16A00FD8497 /* BaseViewController.swift */; };
-		8EC69DC424DCB25F00FD8497 /* ApplicationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DC324DCB25F00FD8497 /* ApplicationContract.swift */; };
+		8EC69DC424DCB25F00FD8497 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DC324DCB25F00FD8497 /* Coordinator.swift */; };
 		8EC69DC724DCB36600FD8497 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DC624DCB36600FD8497 /* UIViewController.swift */; };
 		8EC69DC924DCB3A200FD8497 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DC824DCB3A200FD8497 /* UITableView.swift */; };
 		8EC69DCD24DCB42900FD8497 /* LogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DCC24DCB42900FD8497 /* LogsManager.swift */; };
@@ -62,7 +62,7 @@
 		8EC69E1424DCC7D500FD8497 /* CFSchedulesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69E1124DCC7D500FD8497 /* CFSchedulesResponseModel.swift */; };
 		8EC69E1524DCC7D500FD8497 /* CFScheduleInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69E1224DCC7D500FD8497 /* CFScheduleInformationModel.swift */; };
 		8EC69E1624DCC7D500FD8497 /* CFScheduledTaskModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69E1324DCC7D500FD8497 /* CFScheduledTaskModels.swift */; };
-		8EC69E1924DCD0D100FD8497 /* ApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69E1824DCD0D100FD8497 /* ApplicationRoot.swift */; };
+		8EC69E1924DCD0D100FD8497 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69E1824DCD0D100FD8497 /* AppCoordinator.swift */; };
 		8ECF420F24E492EA00094F84 /* CarFitCalenderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECF420E24E492EA00094F84 /* CarFitCalenderTest.swift */; };
 		8EED089824E2877700E5A5A4 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EED089724E2877700E5A5A4 /* UICollectionView.swift */; };
 /* End PBXBuildFile section */
@@ -99,12 +99,12 @@
 		8E89F3E124DF1CE40099BB41 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8E89F3EA24DF2D190099BB41 /* CarFitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarFitInteractor.swift; sourceTree = "<group>"; };
 		8EA0EF6F24E0BE2D002576D7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		8EB1616224EC71F1005ADEC4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EB8E33D24E12AF40042AD91 /* CalenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
 		8EC69D8224DCAC3300FD8497 /* CarFitApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarFitApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC69D8524DCAC3300FD8497 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC69D8724DCAC3300FD8497 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8EC69D8E24DCAC3500FD8497 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8EC69D9124DCAC3500FD8497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EC69D9324DCAC3500FD8497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EC69D9824DCAC3500FD8497 /* CarFitApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarFitApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC69D9C24DCAC3500FD8497 /* CarFitApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarFitApplicationTests.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		8EC69DB724DCAE2800FD8497 /* MOCK.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MOCK.xcconfig; sourceTree = "<group>"; };
 		8EC69DB824DCAEFA00FD8497 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		8EC69DC024DCB16A00FD8497 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		8EC69DC324DCB25F00FD8497 /* ApplicationContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContract.swift; sourceTree = "<group>"; };
+		8EC69DC324DCB25F00FD8497 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8EC69DC624DCB36600FD8497 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		8EC69DC824DCB3A200FD8497 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8EC69DCC24DCB42900FD8497 /* LogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsManager.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		8EC69E1124DCC7D500FD8497 /* CFSchedulesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFSchedulesResponseModel.swift; sourceTree = "<group>"; };
 		8EC69E1224DCC7D500FD8497 /* CFScheduleInformationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFScheduleInformationModel.swift; sourceTree = "<group>"; };
 		8EC69E1324DCC7D500FD8497 /* CFScheduledTaskModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFScheduledTaskModels.swift; sourceTree = "<group>"; };
-		8EC69E1824DCD0D100FD8497 /* ApplicationRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRoot.swift; sourceTree = "<group>"; };
+		8EC69E1824DCD0D100FD8497 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8ECF420E24E492EA00094F84 /* CarFitCalenderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarFitCalenderTest.swift; sourceTree = "<group>"; };
 		8EED089724E2877700E5A5A4 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -282,11 +282,11 @@
 		8EC69DB524DCADB600FD8497 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				8EC69E1724DCD0A600FD8497 /* Root */,
+				8EC69E1724DCD0A600FD8497 /* Navigation */,
 				8EC69DC224DCB24800FD8497 /* Contract */,
-				8EC69D9024DCAC3500FD8497 /* LaunchScreen.storyboard */,
 				8EC69D8724DCAC3300FD8497 /* SceneDelegate.swift */,
 				8EC69D8524DCAC3300FD8497 /* AppDelegate.swift */,
+				8EB1616224EC71F1005ADEC4 /* LaunchScreen.storyboard */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -332,7 +332,6 @@
 		8EC69DC224DCB24800FD8497 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
-				8EC69DC324DCB25F00FD8497 /* ApplicationContract.swift */,
 				8E7D1AC424E01C5500A65A8E /* DatasourceContract.swift */,
 				8E7D27B224E0356A00A65A8E /* UIViewContract.swift */,
 			);
@@ -488,12 +487,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		8EC69E1724DCD0A600FD8497 /* Root */ = {
+		8EC69E1724DCD0A600FD8497 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				8EC69E1824DCD0D100FD8497 /* ApplicationRoot.swift */,
+				8EC69DC324DCB25F00FD8497 /* Coordinator.swift */,
+				8EC69E1824DCD0D100FD8497 /* AppCoordinator.swift */,
 			);
-			path = Root;
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,9 +606,9 @@
 				8EC69E0E24DCC68E00FD8497 /* LICENSE.txt in Resources */,
 				8EC69E0B24DCC68E00FD8497 /* OpenSans-Bold.ttf in Resources */,
 				8EC69E0C24DCC68E00FD8497 /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				8EB1616324EC71F1005ADEC4 /* LaunchScreen.storyboard in Resources */,
 				8EC69E0F24DCC68E00FD8497 /* OpenSans-Regular.ttf in Resources */,
 				8EC69E1024DCC68E00FD8497 /* OpenSans-BoldItalic.ttf in Resources */,
-				8EC69D9224DCAC3500FD8497 /* LaunchScreen.storyboard in Resources */,
 				8EC69E0724DCC68E00FD8497 /* OpenSans-Light.ttf in Resources */,
 				8EC69E0624DCC68E00FD8497 /* OpenSans-SemiBold.ttf in Resources */,
 				8EC69E0A24DCC68E00FD8497 /* OpenSans-LightItalic.ttf in Resources */,
@@ -654,10 +654,10 @@
 				8E7D27B324E0356A00A65A8E /* UIViewContract.swift in Sources */,
 				8E4FF18924E1BF8D008B30E2 /* CalenderViewModel.swift in Sources */,
 				8EC69DD524DCBEED00FD8497 /* AlertDisplayer.swift in Sources */,
-				8EC69DC424DCB25F00FD8497 /* ApplicationContract.swift in Sources */,
+				8EC69DC424DCB25F00FD8497 /* Coordinator.swift in Sources */,
 				8EC69DB924DCAEFA00FD8497 /* Environment.swift in Sources */,
 				8EC69DE924DCBFF100FD8497 /* HomeViewController.swift in Sources */,
-				8EC69E1924DCD0D100FD8497 /* ApplicationRoot.swift in Sources */,
+				8EC69E1924DCD0D100FD8497 /* AppCoordinator.swift in Sources */,
 				8EC69DE324DCBFF100FD8497 /* HomeTableViewCell.swift in Sources */,
 				8EC69DF024DCC0E300FD8497 /* Constants.swift in Sources */,
 				8EC69DE824DCBFF100FD8497 /* CalendarView.swift in Sources */,
@@ -713,17 +713,6 @@
 			targetProxy = 8EC69DA424DCAC3500FD8497 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		8EC69D9024DCAC3500FD8497 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8EC69D9124DCAC3500FD8497 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8E89F3E324DF22AA0099BB41 /* MOCK */ = {
