@@ -8,7 +8,6 @@
 - Language: Swift
 - MVVM architecture with Combine & Coordinator pattern 
   [Reference link](https://developer.apple.com/documentation/combine)
-  [Reference link](https://developer.apple.com/documentation/combine)
   
 - Coordinator pattern to manage application navigation.
 - APIClientProtocol ( Currently for Mock API Services but can be extended for SOAP & Rest services).
