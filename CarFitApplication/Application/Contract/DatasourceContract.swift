@@ -13,9 +13,9 @@ protocol DatasourceContract{
     
     // MARK: - Properties
     // associatedtype for model class assigned to cell at runtime.
-    associatedtype Model
+    associatedtype Datasource
     
     // MARK: - update cell function to map datasource on UI
-    func updateCell(object: Model)
+    func updateCell(object: Datasource)
 }
 

@@ -25,7 +25,7 @@ class HomeTableViewCell: UITableViewCell {
 
     // MARK: Properties
 
-    typealias Model = CFScheduleInformationModel
+    typealias Datasource = CFScheduleInformationModel
 
     // MARK: Life cycle
 
@@ -42,7 +42,7 @@ class HomeTableViewCell: UITableViewCell {
 extension HomeTableViewCell: DatasourceContract {
     // MARK: Function to update cell
 
-    func updateCell(object: Model) {
+    func updateCell(object: Datasource) {
         if let tasksObj = object.tasks {
             let title = tasksObj.map({ ($0.title ?? "") }).joined(separator: ",")
             let timeInMinutes = tasksObj.map({ ($0.timesInMinutes ?? 0) }).reduce(0, +)

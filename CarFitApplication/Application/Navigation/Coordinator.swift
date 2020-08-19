@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: - Coordinator Protocol to manage navigation in application.
+// MARK: - Coordinator protocol
 
 protocol Coordinator {
     var navigationController: UINavigationController { get set }

@@ -36,12 +36,9 @@ extension NibLoadableView where Self: UIView {
     }
 }
 
-// MARK: - Extension UITableViewCell
-
-// Confirming Reusable protocols and Nib protocols at Base level
+// Confirming Reusable protocols and Nib protocols
 extension UITableViewCell: NibLoadableView, ReuseIdentifying {}
 
-// MARK: - Extension UICollectionViewCell
 
-// Confirming Reusable protocols and Nib protocols at Base level
+// Confirming Reusable protocols and Nib protocols
 extension UICollectionViewCell: NibLoadableView, ReuseIdentifying {}

@@ -19,7 +19,7 @@ class DayCell: UICollectionViewCell {
 
     // MARK: -  Properties
 
-    typealias Model = CalenderDaysModel
+    typealias Datasource = CalenderDaysModel
 
     override var isSelected: Bool {
         willSet {
@@ -41,7 +41,7 @@ class DayCell: UICollectionViewCell {
 extension DayCell: DatasourceContract {
     // MARK: Function to update cell
 
-    func updateCell(object: Model) {
+    func updateCell(object: Datasource) {
         day.text = object.day
         weekday.text = object.weekday
     }
