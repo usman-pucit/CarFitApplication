@@ -1,6 +1,4 @@
 # CarFit Application
- 
- CarFit application is a Car wash booking solution with iOS application. 
 
 # Release Notes 
 
