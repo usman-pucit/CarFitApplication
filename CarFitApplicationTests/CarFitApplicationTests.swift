@@ -13,17 +13,20 @@ import XCTest
 class CarFitApplicationTests: XCTestCase {
     var homeViewModel: HomeViewModel!
     var cancelablle: AnyCancellable!
-    var interactor = CarFitInteractor(apiClient: MockApiClient())
-    let apiClient = MockApiClient()
+    var homeUseCase : HomeListingUseCase!
+    var apiClient : MockApiClient!
     
     override func setUp() {
+        apiClient = MockApiClient()
         homeViewModel = HomeViewModel(apiClient: apiClient)
-        interactor = CarFitInteractor(apiClient: apiClient)
+        homeUseCase = HomeListingUseCase(apiClient: MockApiClient())
     }
     
     override func tearDown() {
+        apiClient = nil
         homeViewModel = nil
         cancelablle = nil
+        homeUseCase = nil
         super.tearDown()
     }
     
@@ -45,7 +48,7 @@ class CarFitApplicationTests: XCTestCase {
             }
         })
         
-        homeViewModel?.performRequestFromMock()
+        homeViewModel?.performRequestWithMock()
     }
     
 
@@ -68,7 +71,26 @@ class CarFitApplicationTests: XCTestCase {
             }
         })
         
-        homeViewModel?.performRequestFromMock(fileName: "mock")
+        homeViewModel?.performRequestWithMock(fileName: "mock")
+    }
+    
+    // MARK: Test request function giving proper error with wrong file name.
+    
+    /// Test must pass and fulfill expected results.
+    
+    func testMockRequestHandler() {
+        let expectation = XCTestExpectation(description: "Request handler working properly")
+        
+        homeUseCase.performRequestWithMock(with: .mockFileName) { [weak self] result in
+            guard self != nil else { return }
+            switch result {
+            case .success(_):
+               expectation.fulfill()
+            case .failure(_):
+                XCTAssert(false, "Failed to fetch results")
+            }
+        }
+        
     }
     
 }
