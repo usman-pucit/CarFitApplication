@@ -8,14 +8,17 @@
 
 import UIKit
 
-// MARK: - Protocol for Datasource contract
-protocol DatasourceContract{
-    
+// MARK: - Protocol
+
+// A protocol with abstract methods
+protocol DatasourceType {
     // MARK: - Properties
-    // associatedtype for model class assigned to cell at runtime.
+
     associatedtype Datasource
-    
-    // MARK: - update cell function to map datasource on UI
+
+    // MARK: - Function
+
+    // Method to bind Cell with Datasource
+
     func updateCell(object: Datasource)
 }
-

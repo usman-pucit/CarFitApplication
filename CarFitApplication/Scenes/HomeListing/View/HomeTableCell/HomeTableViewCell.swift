@@ -39,7 +39,7 @@ class HomeTableViewCell: UITableViewCell {
 
 // MARK: - Extension Datasource Contract
 
-extension HomeTableViewCell: DatasourceContract {
+extension HomeTableViewCell: DatasourceType {
     // MARK: Function to update cell
 
     func updateCell(object: Datasource) {

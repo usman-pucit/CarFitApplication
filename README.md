@@ -8,7 +8,7 @@
   [Reference link](https://developer.apple.com/documentation/combine)
   
 - Coordinator pattern to manage application navigation.
-- APIClientProtocol ( Currently for Mock API Services but can be extended for SOAP & Rest services).
+- APIClientType ( Currently for Mock API Services but can be extended for SOAP & Rest services).
 - UseCase Layer to handle all use cases of a Scene
 - Codables
 - MOCK scheme and environment.

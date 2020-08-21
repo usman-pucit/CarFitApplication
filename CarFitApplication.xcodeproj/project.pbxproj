@@ -12,7 +12,7 @@
 		8E4FF18624E1BEFB008B30E2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FF18524E1BEFB008B30E2 /* Date.swift */; };
 		8E4FF18924E1BF8D008B30E2 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FF18824E1BF8D008B30E2 /* CalenderViewModel.swift */; };
 		8E4FF18C24E1D9AC008B30E2 /* CalenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8E33D24E12AF40042AD91 /* CalenderModel.swift */; };
-		8E7D1AC524E01C5500A65A8E /* DatasourceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7D1AC424E01C5500A65A8E /* DatasourceContract.swift */; };
+		8E7D1AC524E01C5500A65A8E /* DatasourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7D1AC424E01C5500A65A8E /* DatasourceType.swift */; };
 		8E7D27B324E0356A00A65A8E /* Reusables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7D27B224E0356A00A65A8E /* Reusables.swift */; };
 		8E81F7CD24E0914200ACD674 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E81F7CC24E0914200ACD674 /* String.swift */; };
 		8E81F7CF24E0AF7700ACD674 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E81F7CE24E0AF7700ACD674 /* Double.swift */; };
@@ -20,6 +20,8 @@
 		8E89F3EB24DF2D190099BB41 /* HomeListingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89F3EA24DF2D190099BB41 /* HomeListingUseCase.swift */; };
 		8EA0EF7024E0BE2D002576D7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0EF6F24E0BE2D002576D7 /* UIColor.swift */; };
 		8EB1616324EC71F1005ADEC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB1616224EC71F1005ADEC4 /* LaunchScreen.storyboard */; };
+		8EC019AC24F0014A0081EACB /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC019AB24F0014A0081EACB /* Scheduler.swift */; };
+		8EC019AF24F052300081EACB /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC019AE24F052300081EACB /* Publisher.swift */; };
 		8EC69D8624DCAC3300FD8497 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69D8524DCAC3300FD8497 /* AppDelegate.swift */; };
 		8EC69D8824DCAC3300FD8497 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69D8724DCAC3300FD8497 /* SceneDelegate.swift */; };
 		8EC69D8F24DCAC3500FD8497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EC69D8E24DCAC3500FD8497 /* Assets.xcassets */; };
@@ -39,7 +41,7 @@
 		8EC69DE724DCBFF100FD8497 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DE024DCBFF100FD8497 /* DayCell.swift */; };
 		8EC69DE824DCBFF100FD8497 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DE124DCBFF100FD8497 /* CalendarView.swift */; };
 		8EC69DE924DCBFF100FD8497 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DE224DCBFF100FD8497 /* HomeViewController.swift */; };
-		8EC69DED24DCC05300FD8497 /* APIClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DEC24DCC05300FD8497 /* APIClientProtocol.swift */; };
+		8EC69DED24DCC05300FD8497 /* APIClientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DEC24DCC05300FD8497 /* APIClientType.swift */; };
 		8EC69DF024DCC0E300FD8497 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DEF24DCC0E300FD8497 /* Constants.swift */; };
 		8EC69DF224DCC35700FD8497 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DF124DCC35700FD8497 /* Decodable.swift */; };
 		8EC69DF724DCC46300FD8497 /* MockApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC69DF624DCC46300FD8497 /* MockApiClient.swift */; };
@@ -85,7 +87,7 @@
 		8E34728824E9EA260045D807 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8E4FF18524E1BEFB008B30E2 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		8E4FF18824E1BF8D008B30E2 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
-		8E7D1AC424E01C5500A65A8E /* DatasourceContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasourceContract.swift; sourceTree = "<group>"; };
+		8E7D1AC424E01C5500A65A8E /* DatasourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasourceType.swift; sourceTree = "<group>"; };
 		8E7D27B224E0356A00A65A8E /* Reusables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusables.swift; sourceTree = "<group>"; };
 		8E81F7CC24E0914200ACD674 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8E81F7CE24E0AF7700ACD674 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -94,6 +96,8 @@
 		8EA0EF6F24E0BE2D002576D7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		8EB1616224EC71F1005ADEC4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EB8E33D24E12AF40042AD91 /* CalenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderModel.swift; sourceTree = "<group>"; };
+		8EC019AB24F0014A0081EACB /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		8EC019AE24F052300081EACB /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		8EC69D8224DCAC3300FD8497 /* CarFitApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarFitApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC69D8524DCAC3300FD8497 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC69D8724DCAC3300FD8497 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +124,7 @@
 		8EC69DE024DCBFF100FD8497 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		8EC69DE124DCBFF100FD8497 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		8EC69DE224DCBFF100FD8497 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		8EC69DEC24DCC05300FD8497 /* APIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientProtocol.swift; sourceTree = "<group>"; };
+		8EC69DEC24DCC05300FD8497 /* APIClientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientType.swift; sourceTree = "<group>"; };
 		8EC69DEF24DCC0E300FD8497 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8EC69DF124DCC35700FD8497 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		8EC69DF624DCC46300FD8497 /* MockApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApiClient.swift; sourceTree = "<group>"; };
@@ -300,7 +304,7 @@
 		8EC69DC224DCB24800FD8497 /* Contract */ = {
 			isa = PBXGroup;
 			children = (
-				8E7D1AC424E01C5500A65A8E /* DatasourceContract.swift */,
+				8E7D1AC424E01C5500A65A8E /* DatasourceType.swift */,
 				8E7D27B224E0356A00A65A8E /* Reusables.swift */,
 			);
 			path = Contract;
@@ -318,6 +322,7 @@
 				8E81F7CE24E0AF7700ACD674 /* Double.swift */,
 				8EA0EF6F24E0BE2D002576D7 /* UIColor.swift */,
 				8E4FF18524E1BEFB008B30E2 /* Date.swift */,
+				8EC019AE24F052300081EACB /* Publisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 		8EC69DCB24DCB41700FD8497 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				8EC019AB24F0014A0081EACB /* Scheduler.swift */,
 				8EC69DD324DCBEED00FD8497 /* AlertDisplayer.swift */,
 				8EC69DCC24DCB42900FD8497 /* LogsManager.swift */,
 			);
@@ -403,7 +409,7 @@
 		8EC69DEB24DCC01100FD8497 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
-				8EC69DEC24DCC05300FD8497 /* APIClientProtocol.swift */,
+				8EC69DEC24DCC05300FD8497 /* APIClientType.swift */,
 				8EC69DF624DCC46300FD8497 /* MockApiClient.swift */,
 			);
 			path = APIClient;
@@ -599,12 +605,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC019AC24F0014A0081EACB /* Scheduler.swift in Sources */,
 				8E4FF18C24E1D9AC008B30E2 /* CalenderModel.swift in Sources */,
 				8E81F7CD24E0914200ACD674 /* String.swift in Sources */,
 				8EC69DC724DCB36600FD8497 /* UIViewController.swift in Sources */,
 				8EC69E1624DCC7D500FD8497 /* CFScheduledTaskModels.swift in Sources */,
 				8EC69E1524DCC7D500FD8497 /* CFScheduleInformationModel.swift in Sources */,
-				8E7D1AC524E01C5500A65A8E /* DatasourceContract.swift in Sources */,
+				8E7D1AC524E01C5500A65A8E /* DatasourceType.swift in Sources */,
 				8E7D27B324E0356A00A65A8E /* Reusables.swift in Sources */,
 				8E4FF18924E1BF8D008B30E2 /* CalenderViewModel.swift in Sources */,
 				8EC69DD524DCBEED00FD8497 /* AlertDisplayer.swift in Sources */,
@@ -627,7 +634,8 @@
 				8EC69DF224DCC35700FD8497 /* Decodable.swift in Sources */,
 				8EED089824E2877700E5A5A4 /* UICollectionView.swift in Sources */,
 				8EC69D8624DCAC3300FD8497 /* AppDelegate.swift in Sources */,
-				8EC69DED24DCC05300FD8497 /* APIClientProtocol.swift in Sources */,
+				8EC019AF24F052300081EACB /* Publisher.swift in Sources */,
+				8EC69DED24DCC05300FD8497 /* APIClientType.swift in Sources */,
 				8EC69DE724DCBFF100FD8497 /* DayCell.swift in Sources */,
 				8E81F7CF24E0AF7700ACD674 /* Double.swift in Sources */,
 				8EC69D8824DCAC3300FD8497 /* SceneDelegate.swift in Sources */,

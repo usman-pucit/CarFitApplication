@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - Coordinator protocol
 
+// A protocol with Abstract methods
 protocol Coordinator {
     var navigationController: UINavigationController { get set }
     func start()

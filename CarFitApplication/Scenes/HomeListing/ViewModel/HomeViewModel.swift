@@ -9,38 +9,72 @@
 import Combine
 import Foundation
 
-// MARK: Class for ViewModel
+// MARK: - Protocol
 
-class HomeViewModel: ObservableObject {
+// ViewModel Contract
+protocol HomeViewModelType: class {
+    associatedtype Output
+    func jobSchedules(with fileName: String) -> Output
+}
+
+// MARK: Class
+
+// ViewModel
+final class HomeViewModel {
     // MARK: Properties
-    
-    // Publisher properties to publish data change
-    
-    @Published private(set) var dataSource: CFSchedulesResponseModel?
-    @Published private(set) var error: APIError?
-    
-    private var apiClient: APIClientProtocol
-    private var homeUseCase: HomeListingUseCase
-    
-    // MARK: Initializer
-    
-    // Dependency of APIClient
-    init(apiClient: APIClientProtocol) {
-        self.apiClient = apiClient
-        homeUseCase = HomeListingUseCase(apiClient: apiClient)
+
+    private var dataSource: [CFScheduleInformationModel] = []
+    private var error: APIError?
+    private var cancellables: [AnyCancellable] = []
+    private var useCase: CarFitUseCaseType
+
+    var numberOfRows: Int {
+        return dataSource.count
     }
-    
-    // MARK: - Function to perform data request
-    
-    internal func performRequestWithMock(fileName: String = .mockFileName) {
-        homeUseCase.performRequestWithMock(with: fileName) { [weak self] result in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .success(let response):
-                strongSelf.dataSource = response
-            case .failure(let error):
-                strongSelf.error = error
-            }
-        }
+
+    var errorString: String? {
+        return error?.rawValue
+    }
+
+    subscript(rowValue atIndexPath: Int) -> CFScheduleInformationModel {
+        return dataSource[atIndexPath]
+    }
+
+//    private var apiClient: APIClientType
+
+    // MARK: Initializer
+
+    // Dependency of APIClient
+    init(useCase: CarFitUseCaseType) {
+        self.useCase = useCase
+    }
+}
+
+// MARK: - Extension
+
+extension HomeViewModel: HomeViewModelType {
+    // Publisher
+    typealias Output = AnyPublisher<CFResult<[CFScheduleInformationModel]>, Never>
+
+    // MARK: - Function to fetch all job schedules with with mock response.
+
+    func jobSchedules(with fileName: String) -> AnyPublisher<CFResult<[CFScheduleInformationModel]>, Never> {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+
+        let outPut = useCase.jobSchedules(with: fileName)
+            .map({ (result) -> CFResult<[CFScheduleInformationModel]> in
+                switch result {
+                case .success(let jobs):
+                    self.dataSource = jobs
+                    return .success(jobs)
+                case .failure(let error):
+                    self.error = error
+                    return .failure(error)
+                }
+            })
+            .eraseToAnyPublisher()
+
+        return Publishers.MergeMany(outPut).eraseToAnyPublisher()
     }
 }

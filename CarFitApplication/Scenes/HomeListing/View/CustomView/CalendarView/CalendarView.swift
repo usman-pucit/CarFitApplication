@@ -26,24 +26,15 @@ class CalendarView: UIView {
     
     private var calenderModel: CalenderModel!
     weak var delegate: CalendarDelegate?
-    private var viewModel = CalenderViewModel()
-    private var cancellable: AnyCancellable?
-    private var selectedIndexPath: IndexPath?
-    private var calenderDaysArray: [CalenderDaysModel] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.daysCollectionView.reloadData()
-                self.daysCollectionView.selectItem(at: self.selectedIndexPath ?? IndexPath(row: 0, section: 0), animated: true, scrollPosition: .left)
-                self.daysCollectionView.setNeedsLayout()
-            }
-        }
-    }
+    private var viewModel: CalenderViewModel!
+    private var cancellables: [AnyCancellable] = []
     
     // MARK: - Initialize calendar
     
     private func initialize() {
+        viewModel = CalenderViewModel()
         setupUI()
-        onBindingViewModel()
+        bindViewModel(with: .current)
     }
     
     // MARK: - Function
@@ -56,27 +47,33 @@ class CalendarView: UIView {
     
     // MARK: - Function to bind with ViewModel
     
-    private func onBindingViewModel() {
-        viewModel.onSetCalneder(to: .current)
+    private func bindViewModel(with selectedMonth: SelectedMonth) {
+        let output = viewModel.setCalneder(to: selectedMonth)
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
         
-        cancellable = viewModel.$calenderModel.sink(receiveValue: { model in
-            if let calenderModel = model, let daysModel = model?.days {
-                self.calenderDaysArray = daysModel
-                self.calenderModel = calenderModel
-                self.monthAndYear.text = calenderModel.monthAndYear
-                if let todayString = calenderModel.today, let today = Int(todayString) {
-                    self.selectedIndexPath = IndexPath(row: today-1, section: 0)
-                } else {
-                    self.selectedIndexPath = nil
-                }
+        output.sink(receiveValue: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                strongSelf.refreshCollectionView()
+            case .failure:
+                break
             }
-        })
+        }).store(in: &cancellables)
+    }
+    
+    private func refreshCollectionView() {
+        monthAndYear.text = viewModel.monthAndYear
+        daysCollectionView.reloadData()
+        daysCollectionView.selectItem(at: viewModel.selectedIndexPath, animated: true, scrollPosition: .left)
+        daysCollectionView.setNeedsLayout()
     }
     
     // MARK: - Change month when left and right arrow button tapped
     
     @IBAction func arrowTapped(_ sender: UIButton) {
-        sender == rightBtn ? viewModel.onSetCalneder(to: .next) : viewModel.onSetCalneder(to: .previous)
+        sender == rightBtn ? bindViewModel(with: .next) : bindViewModel(with: .previous)
     }
 }
 
@@ -84,20 +81,19 @@ class CalendarView: UIView {
 
 extension CalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return calenderDaysArray.count
+        return viewModel.numberOfRows
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(DayCell.self, for: indexPath)
-        let model = calenderDaysArray[indexPath.row]
-        cell.isSelected = indexPath == selectedIndexPath ? true : false
-        cell.updateCell(object: model)
+        let cell: DayCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cellViewModel = viewModel[rowValue: indexPath.row]
+        cell.updateCell(object: cellViewModel)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let model = calenderDaysArray[indexPath.row]
-        delegate?.getSelectedDate(model.date)
+        let cellViewModel = viewModel[rowValue: indexPath.row]
+        delegate?.getSelectedDate(cellViewModel.date)
     }
 }
 

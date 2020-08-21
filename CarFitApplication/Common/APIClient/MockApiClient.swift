@@ -6,17 +6,20 @@
 //  Copyright © 2020 usman-pucit All rights reserved.
 //
 
+import Combine
 import Foundation
 
-// MARK: Struct MockApiClient for mock data
+// MARK: MockApiClient
 
-struct MockApiClient: APIClientProtocol {
- 
+// A concrete class with APIClientType
+
+final class MockApiClient: APIClientType {
     // MARK: - Function
-    // Perform request function for mock data from JSON file
-    func performRequestWithMock<T: Decodable>(with fileName: String, onResult: @escaping (Result<T>) -> ()) {
-        
-        if let response = T.parseJSON(with: fileName){ onResult(.success(response)) } else { onResult(.failure(.responseError)) }
+
+    func execute<T>(with fileName: String) -> AnyPublisher<Result<T, APIError>, Never> where T: Decodable {
+        return T.parseJSON(with: fileName)
+            .subscribe(on: Scheduler.backgroundWorkScheduler)
+            .receive(on: Scheduler.mainScheduler)
+            .eraseToAnyPublisher()
     }
-    
 }

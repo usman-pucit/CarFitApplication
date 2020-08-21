@@ -27,13 +27,8 @@ class HomeViewController: UIViewController, AlertDisplayer {
     private var minHeaderHeight: CGFloat = 20.0
     private let maxHeaderHeight: CGFloat = 200
     private let tableViewTop: CGFloat = 112.0
+    private var cancellables: [AnyCancellable] = []
     private var viewModel: HomeViewModel!
-    private var cancellable: AnyCancellable?
-    private var dataSource: CFSchedulesResponseModel? {
-        didSet {
-            self.workOrderTableView.reloadData()
-        }
-    }
     
     // Refresh control for TableView
     lazy var refreshControl: UIRefreshControl = {
@@ -50,8 +45,8 @@ class HomeViewController: UIViewController, AlertDisplayer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initialize view model with required dependency of APIClientProtocol
-        self.viewModel = HomeViewModel(apiClient: MockApiClient())
+        // Initialize view model with required dependency of APIClientType
+        self.viewModel = HomeViewModel(useCase: HomeListingUseCase())
         self.setupUI()
         self.bindViewModel()
     }
@@ -74,26 +69,31 @@ class HomeViewController: UIViewController, AlertDisplayer {
         self.workOrderTableView.addSubview(self.refreshControl)
     }
     
-    // MARK: - Function for to bind ViewModel
+    // MARK: - Binding ViewModel
     
     private func bindViewModel() {
         // Fucntion call for mock request
-        self.viewModel.performRequestWithMock()
+        let jobSchedules = self.viewModel.jobSchedules(with: .mockFileName)
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
         
-        // Subscription of datasource
-        self.cancellable = self.viewModel.$dataSource.sink(receiveValue: { value in
-            self.dataSource = value
-        })
-        
-        // Subscription of error
-        self.cancellable = self.viewModel.$error.sink(receiveValue: { error in
-            guard let _error = error else { return }
-            let action = UIAlertAction(title: .buttonOkText, style: .default) { _ in
+        jobSchedules.sink(receiveValue: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                strongSelf.calendarButton.isEnabled = true
+                strongSelf.workOrderTableView.reloadData()
+            case .failure:
+                strongSelf.calendarButton.isEnabled = false
+                strongSelf.showError()
             }
-            DispatchQueue.main.async {
-                self.displayAlert(with: .errorTitle, message: _error.rawValue, actions: [action])
-            }
-        })
+        }).store(in: &cancellables)
+    }
+    
+    // MARK: - Function to show error alert
+    private func showError() {
+        let action = UIAlertAction(title: .buttonOkText, style: .default)
+        self.displayAlert(with: .errorTitle, message: self.viewModel.errorString ?? APIError.invalidResponse.rawValue, actions: [action])
     }
     
     // MARK: - Add calender to view
@@ -128,14 +128,13 @@ class HomeViewController: UIViewController, AlertDisplayer {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource?.data?.count ?? 0
+        return self.viewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(HomeTableViewCell.self, for: indexPath)
-        let object = dataSource?.data?[indexPath.row]
-        
-        cell.updateCell(object: object!)
+        let cellViewModel = viewModel[rowValue: indexPath.row]
+        cell.updateCell(object: cellViewModel)
         return cell
     }
 }

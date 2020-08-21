@@ -8,13 +8,13 @@
 
 import UIKit
 
-// MARK: - protocol ReuseIdentifying
+// MARK: - Protocol
 
 protocol ReuseIdentifying {
     static var reuseIdentifier: String { get }
 }
 
-// MARK: - extension ReuseIdentifying
+// MARK: - extension
 
 extension ReuseIdentifying where Self: UIView {
     static var reuseIdentifier: String {
@@ -22,13 +22,13 @@ extension ReuseIdentifying where Self: UIView {
     }
 }
 
-// MARK: - Protocol NibLoadableView
+// MARK: - Protocol
 
 protocol NibLoadableView: class {
     static var nibName: String { get }
 }
 
-// MARK: - extension NibLoadableView
+// MARK: - extension
 
 extension NibLoadableView where Self: UIView {
     static var nibName: String {
@@ -36,9 +36,9 @@ extension NibLoadableView where Self: UIView {
     }
 }
 
-// Confirming Reusable protocols and Nib protocols
+/// Confirming Reusable protocols and Nib protocols
 extension UITableViewCell: NibLoadableView, ReuseIdentifying {}
 
 
-// Confirming Reusable protocols and Nib protocols
+/// Confirming Reusable protocols and Nib protocols
 extension UICollectionViewCell: NibLoadableView, ReuseIdentifying {}

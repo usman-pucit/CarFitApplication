@@ -6,35 +6,48 @@
 //  Copyright © 2020 usman-pucit All rights reserved.
 //
 
+import Combine
 import Foundation
 
-// Protocol for MockListing Use case.
-protocol MockListingUseCase {
-    func performRequestWithMock(with fileName: String, onResult: @escaping (Result<CFSchedulesResponseModel>) -> ())
+// MARK: - Protocol
+
+// CarFitUseCaseType Usecase.
+protocol CarFitUseCaseType {
+    func jobSchedules(with fileName: String) -> AnyPublisher<Result<[CFScheduleInformationModel], APIError>, Never>
 }
 
 // MARK: - Class
-//  HomeListingUseCase for HomeListing with a mock request.
+
+//  HomeListingUseCase for HomeListing
 
 final class HomeListingUseCase {
     // MARK: -  Properties
 
-    var apiClient: APIClientProtocol
+    var apiClient: APIClientType
 
     // MARK: - Initializer
 
-    // Dependency of APIClientProtocol
-    init(apiClient: APIClientProtocol) {
+    // Dependency of APIClientType
+    init(apiClient: APIClientType = MockApiClient()) {
         self.apiClient = apiClient
     }
 }
 
 // MARK: - Extension
 
-extension HomeListingUseCase: MockListingUseCase {
-    // MARK: - Function to perform mock request
+extension HomeListingUseCase: CarFitUseCaseType {
+    // MARK: - Function to fetch jobs list
 
-    func performRequestWithMock(with fileName: String, onResult: @escaping (Result<CFSchedulesResponseModel>) -> ()) {
-        apiClient.performRequestWithMock(with: fileName, onResult: onResult)
+    func jobSchedules(with fileName: String) -> AnyPublisher<Result<[CFScheduleInformationModel], APIError>, Never> {
+        return apiClient.execute(with: fileName).map({ (result: Result<CFSchedulesResponseModel, APIError>) -> Result<[CFScheduleInformationModel], APIError> in
+            switch result {
+            case .success(let jobs):
+                return .success(jobs.data ?? [])
+            case .failure(let error):
+                return .failure(error)
+            }
+            }).subscribe(on: Scheduler.backgroundWorkScheduler)
+            .receive(on: Scheduler.mainScheduler)
+            .eraseToAnyPublisher()
     }
 }

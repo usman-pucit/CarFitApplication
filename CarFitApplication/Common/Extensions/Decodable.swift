@@ -6,20 +6,22 @@
 //  Copyright © 2020 usman-pucit All rights reserved.
 //
 
+import Combine
 import Foundation
 
-// MARK: - Extension Decodable
+// MARK: - Extension
 
 extension Decodable {
-    // MARK: - Function to parse JSON mock file into decodable
+    // MARK: - Function
 
-    static func parseJSON(with fileName: String) -> Self? {
+    static func parseJSON(with fileName: String) -> AnyPublisher<Result<Self, APIError>, Never> {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let output = try? JSONDecoder().decode(self, from: data)
+
         else {
-            return nil
+            return Just<Result<Self, APIError>>(.failure(APIError.invalidResponse)).eraseToAnyPublisher()
         }
-        return output
+        return Just<Result<Self, APIError>>(.success(output)).eraseToAnyPublisher()
     }
 }

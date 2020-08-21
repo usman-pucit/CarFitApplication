@@ -9,41 +9,48 @@
 import Combine
 import Foundation
 
-enum CalenderMonth {
+// MARK: - Enum
+
+enum SelectedMonth {
     case current
     case next
     case previous
 }
 
-// MARK: - Class for ViewModel
+// MARK: - Protocol
 
-class CalenderViewModel: ObservableObject {
+// ViewModel Contract
+protocol CalenderViewModelType: class {
+    associatedtype Output
+    func setCalneder(to month: SelectedMonth) -> Output
+}
+
+// MARK: - Class
+
+final class CalenderViewModel {
     // MARK: - Properties
 
-    // Publisher properties to publish data change
+    private var dataSource: [CalenderDaysModel] = []
+    private var calenderModel: CalenderModel!
 
-    @Published private(set) var calenderModel: CalenderModel!
+    // Publisher
+    typealias Output = AnyPublisher<Result<CalenderModel, APIError>, Never>
 
-    // MARK: - Function
-
-    // Setting caleder to month current/next/previous
-
-    func onSetCalneder(to month: CalenderMonth) {
-        switch month {
-        case .current:
-            calenderModel = daysInMonthModel()
-        case .next:
-            Date.selectedDate = Date.selectedDate.nextMonth
-            calenderModel = daysInMonthModel()
-        case .previous:
-            Date.selectedDate = Date.selectedDate.previosMonth
-            calenderModel = daysInMonthModel()
-        }
+    var numberOfRows: Int {
+        return calenderModel.days.count
     }
 
-    // MARK: - Function
+    var monthAndYear: String {
+        return calenderModel.monthAndYear
+    }
 
-    // Preparing datasource with days in a month
+    var selectedIndexPath: IndexPath{
+        return IndexPath(row: (Int(calenderModel.today ?? "0") ?? 0) - 1, section: 0)
+    }
+
+    subscript(rowValue atIndexPath: Int) -> CalenderDaysModel {
+        return calenderModel.days[atIndexPath]
+    }
 
     private func daysInMonthModel() -> CalenderModel {
         let datesInCurrentMonth = Date().datesInCurrentMonth()
@@ -54,5 +61,21 @@ class CalenderViewModel: ObservableObject {
             daysInMonthArray.append(daysModel)
         }
         return CalenderModel(monthAndYear: Date.selectedDate.monthAndYear, days: daysInMonthArray)
+    }
+}
+
+extension CalenderViewModel: CalenderViewModelType {
+    // MARK: - Function
+
+    // Setting caleder to month current/next/previous
+
+    func setCalneder(to month: SelectedMonth) -> AnyPublisher<Result<CalenderModel, APIError>, Never> {
+        switch month {
+        case .current: break
+        case .next: Date.selectedDate = Date.selectedDate.nextMonth
+        case .previous: Date.selectedDate = Date.selectedDate.previosMonth
+        }
+        calenderModel = daysInMonthModel()
+        return .just(.success(calenderModel))
     }
 }

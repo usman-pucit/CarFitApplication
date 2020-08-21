@@ -8,7 +8,9 @@
 
 import UIKit
 
-// MARK: - Class to setup application navigation
+// MARK: - Class
+
+/// Class to manage application navigation.
 
 class AppCoordinator: Coordinator {
     // MARK: - Properties

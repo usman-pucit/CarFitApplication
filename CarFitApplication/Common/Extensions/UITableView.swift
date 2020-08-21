@@ -29,4 +29,12 @@ extension UITableView {
         else { fatalError("Could not dequeue cell with type \(T.self)") }
         return cell
     }
+    
+    func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
+            fatalError("Unable to Dequeue Reusable Table View Cell")
+        }
+        
+        return cell
+    }
 }

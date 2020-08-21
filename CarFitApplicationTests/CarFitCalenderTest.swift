@@ -10,102 +10,166 @@
 import Combine
 import XCTest
 
-
 class CarFitCalenderTest: XCTestCase {
-    
-    var calenderVM : CalenderViewModel!
-    var cancelablle: AnyCancellable!
+    var viewModel: CalenderViewModel!
+    private var cancellables: [AnyCancellable] = []
     
     override func setUp() {
-        calenderVM = CalenderViewModel()
+        viewModel = CalenderViewModel()
     }
     
     override func tearDown() {
-        cancelablle = nil
-        calenderVM = nil
+        viewModel = nil
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
     }
     
     // MARK: Test setting calender working properly for current month
-
+    
     func testSettingCalenderForCurrentMonth() {
         let expectation = XCTestExpectation(description: "Correct current date selected")
         
-        calenderVM.onSetCalneder(to: .current)
-        cancelablle = calenderVM.$calenderModel.sink(receiveValue: { (model) in
-            if model?.monthAndYear == Date.selectedDate.monthAndYear{
-                expectation.fulfill()
-            }else{
-                 XCTAssert(false, "Failed")
+        let output = viewModel.setCalneder(to: .current)
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+        
+        output.sink(receiveValue: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                if strongSelf.viewModel.monthAndYear == Date.selectedDate.monthAndYear {
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(false, "Failed")
+                }
+            case .failure:
+                XCTAssert(false, "Failed")
             }
-        })
-    
+        }).store(in: &cancellables)
     }
     
     // MARK: Test setting calender working properly for next month
-
+    
     func testSettingCalenderForNextMonth() {
         let expectation = XCTestExpectation(description: "Correct next date selected")
         
-        calenderVM.onSetCalneder(to: .next)
-        cancelablle = calenderVM.$calenderModel.sink(receiveValue: { (model) in
-            if model?.monthAndYear == Date.selectedDate.monthAndYear{
-                expectation.fulfill()
-            }else{
-                 XCTAssert(false, "Failed")
+        let output = viewModel.setCalneder(to: .current)
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+        
+        output.sink(receiveValue: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                if strongSelf.viewModel.monthAndYear == Date.selectedDate.monthAndYear {
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(false, "Failed")
+                }
+            case .failure:
+                XCTAssert(false, "Failed")
             }
-        })
-    
+        }).store(in: &cancellables)
     }
     
     // MARK: Test setting calender working properly for previous month
-
+    
     func testSettingCalenderForPreviousMonth() {
         let expectation = XCTestExpectation(description: "Correct previous date selected")
         
-        calenderVM.onSetCalneder(to: .previous)
-        cancelablle = calenderVM.$calenderModel.sink(receiveValue: { (model) in
-            if model?.monthAndYear == Date.selectedDate.monthAndYear{
-                expectation.fulfill()
-            }else{
-                 XCTAssert(false, "Failed")
+        let output = viewModel.setCalneder(to: .current)
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+        
+        output.sink(receiveValue: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                if strongSelf.viewModel.monthAndYear == Date.selectedDate.monthAndYear {
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(false, "Failed")
+                }
+            case .failure:
+                XCTAssert(false, "Failed")
             }
-        })
-
+        }).store(in: &cancellables)
     }
     
-    
     // MARK: Test caleder setting up correct dates
-
+    
     func testSettingUpCalenderAndResult() {
         let expectation = XCTestExpectation(description: "Wrong date")
         
-        calenderVM.onSetCalneder(to: .current)
-        cancelablle = calenderVM.$calenderModel.sink(receiveValue: { (model) in
-            if model?.monthAndYear != Date.selectedDate.previosMonth.monthAndYear{
-                expectation.fulfill()
-            }else{
-                 XCTAssert(false, "Failed")
-            }
-        })
+        var output = viewModel.setCalneder(to: .current)
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
         
-        calenderVM.onSetCalneder(to: .next)
-        cancelablle = calenderVM.$calenderModel.sink(receiveValue: { (model) in
-            if model?.monthAndYear != Date.selectedDate.previosMonth.monthAndYear{
-                expectation.fulfill()
-            }else{
-                 XCTAssert(false, "Failed")
+        output.sink(receiveValue: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                if strongSelf.viewModel.monthAndYear != Date.selectedDate.previosMonth.monthAndYear {
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(false, "Failed")
+                }
+            case .failure:
+                XCTAssert(false, "Failed")
             }
-        })
+        }).store(in: &cancellables)
         
-        calenderVM.onSetCalneder(to: .previous)
-        cancelablle = calenderVM.$calenderModel.sink(receiveValue: { (model) in
-            if model?.monthAndYear != Date.selectedDate.nextMonth.monthAndYear{
-                expectation.fulfill()
-            }else{
-                 XCTAssert(false, "Failed")
+        output = viewModel.setCalneder(to: .previous)
+        output.sink(receiveValue: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                if strongSelf.viewModel.monthAndYear != Date.selectedDate.nextMonth.monthAndYear {
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(false, "Failed")
+                }
+            case .failure:
+                XCTAssert(false, "Failed")
             }
-        })
-
+        }).store(in: &cancellables)
+        
+        output = viewModel.setCalneder(to: .next)
+        output.sink(receiveValue: { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success:
+                if strongSelf.viewModel.monthAndYear != Date.selectedDate.previosMonth.monthAndYear {
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(false, "Failed")
+                }
+            case .failure:
+                XCTAssert(false, "Failed")
+            }
+        }).store(in: &cancellables)
     }
     
+    // MARK: Test selectedIndexPath
+    
+    /// Test must pass and fulfill expected results.
+    
+    func testSelectedIndexPath() {
+        let expectation = XCTestExpectation(description: "Selected indexpath matched")
+        
+        let output = viewModel.setCalneder(to: .current)
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+        
+        output.sink(receiveValue: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            
+            if let todayString = Date().today, let today = Int(todayString), strongSelf.viewModel.selectedIndexPath == IndexPath(row: today-1, section: 0) {
+                expectation.fulfill()
+            } else {
+                XCTAssert(false, "Failed")
+            }
+            
+        }).store(in: &cancellables)
+    }
 }

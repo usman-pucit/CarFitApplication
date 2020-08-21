@@ -38,7 +38,7 @@ class DayCell: UICollectionViewCell {
 
 // Confirming Datasource contract functions
 
-extension DayCell: DatasourceContract {
+extension DayCell: DatasourceType {
     // MARK: Function to update cell
 
     func updateCell(object: Datasource) {
