@@ -23,10 +23,6 @@
 - Testability, Scalability and reusable code. That is easy to understand and extend. 
 - MVVM with Combine(Apple's native reactive programming framework) to get data stream and propagation of changes at one place.
 
-### Missing UI functionality also added by me:
-- Calender animation & calender hide show functionality was mentioned in the video's provided in BRT document, but it was not there in provided code. So I added it later on.  
-- Some improvements also made with UI binding like tableview datasource methods can handle generic cells now.
-
 ### Improvement & Enhancement Areas:
 
 - Test coverage including UI testing. 
