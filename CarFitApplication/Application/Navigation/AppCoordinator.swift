@@ -12,7 +12,7 @@ import UIKit
 
 /// Class to manage application navigation.
 
-class AppCoordinator: Coordinator {
+final class AppCoordinator: Coordinator {
     // MARK: - Properties
 
     var navigationController: UINavigationController

@@ -91,6 +91,7 @@ class HomeViewController: UIViewController, AlertDisplayer {
     }
     
     // MARK: - Function to show error alert
+    
     private func showError() {
         let action = UIAlertAction(title: .buttonOkText, style: .default)
         self.displayAlert(with: .errorTitle, message: self.viewModel.errorString ?? APIError.invalidResponse.rawValue, actions: [action])
@@ -132,25 +133,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(HomeTableViewCell.self, for: indexPath)
+        let cell: HomeTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         let cellViewModel = viewModel[rowValue: indexPath.row]
         cell.updateCell(object: cellViewModel)
         return cell
     }
 }
 
-// MARK: - Extension for Scrolling delegates
+// MARK: - Extension
+
+/// ScrollView Delegates
 
 extension HomeViewController {
-    // MARK: - Function this delegate is called when start scrolling
-    
-    // Disable calendarButton while scrolling
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.lastContentOffset = scrollView.contentOffset.y
         self.calendarButton.isEnabled = false
     }
-    
-    // MARK: - Function this scrolling this delegate is being called so you may now check direction
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.lastContentOffset < scrollView.contentOffset.y, self.calenderViewHeight.constant > 0.0 {
@@ -159,9 +157,6 @@ extension HomeViewController {
         }
     }
     
-    // MARK: - Function this delegate is called on scrolling ended
-    
-    // Enable calendarButton after scrolling is ended
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.calendarButton.isEnabled = true
     }

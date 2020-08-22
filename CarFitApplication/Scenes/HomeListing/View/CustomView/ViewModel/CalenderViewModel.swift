@@ -33,9 +33,6 @@ final class CalenderViewModel {
     private var dataSource: [CalenderDaysModel] = []
     private var calenderModel: CalenderModel!
 
-    // Publisher
-    typealias Output = AnyPublisher<Result<CalenderModel, APIError>, Never>
-
     var numberOfRows: Int {
         return calenderModel.days.count
     }
@@ -44,7 +41,7 @@ final class CalenderViewModel {
         return calenderModel.monthAndYear
     }
 
-    var selectedIndexPath: IndexPath{
+    var selectedIndexPath: IndexPath {
         return IndexPath(row: (Int(calenderModel.today ?? "0") ?? 0) - 1, section: 0)
     }
 
@@ -65,9 +62,12 @@ final class CalenderViewModel {
 }
 
 extension CalenderViewModel: CalenderViewModelType {
+    // Publisher
+    typealias Output = AnyPublisher<Result<CalenderModel, APIError>, Never>
+
     // MARK: - Function
 
-    // Setting caleder to month current/next/previous
+    /// Set caleder with current, next and previous months
 
     func setCalneder(to month: SelectedMonth) -> AnyPublisher<Result<CalenderModel, APIError>, Never> {
         switch month {

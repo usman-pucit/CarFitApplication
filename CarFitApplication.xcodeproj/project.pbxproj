@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8E008CE524DDA949003078FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E008CE424DDA949003078FE /* Main.storyboard */; };
+		8E28016524F0924800890D44 /* HomeTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E28016424F0924800890D44 /* HomeTableViewCellModel.swift */; };
+		8E28016B24F09C5D00890D44 /* CarFitUseCaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E28016A24F09C5D00890D44 /* CarFitUseCaseType.swift */; };
 		8E34728924E9EA260045D807 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8E34728824E9EA260045D807 /* README.md */; };
 		8E4FF18624E1BEFB008B30E2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FF18524E1BEFB008B30E2 /* Date.swift */; };
 		8E4FF18924E1BF8D008B30E2 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4FF18824E1BF8D008B30E2 /* CalenderViewModel.swift */; };
@@ -84,6 +86,8 @@
 
 /* Begin PBXFileReference section */
 		8E008CE424DDA949003078FE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8E28016424F0924800890D44 /* HomeTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCellModel.swift; sourceTree = "<group>"; };
+		8E28016A24F09C5D00890D44 /* CarFitUseCaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarFitUseCaseType.swift; sourceTree = "<group>"; };
 		8E34728824E9EA260045D807 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8E4FF18524E1BEFB008B30E2 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		8E4FF18824E1BF8D008B30E2 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				8EC69E1324DCC7D500FD8497 /* CFScheduledTaskModels.swift */,
 				8EC69E1224DCC7D500FD8497 /* CFScheduleInformationModel.swift */,
 				8EC69E1124DCC7D500FD8497 /* CFSchedulesResponseModel.swift */,
+				8E28016424F0924800890D44 /* HomeTableViewCellModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -330,7 +335,7 @@
 		8EC69DCA24DCB3D200FD8497 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				8EC69DEB24DCC01100FD8497 /* APIClient */,
+				8EC69DEB24DCC01100FD8497 /* AbstractLayers */,
 				8EC69DEE24DCC0CD00FD8497 /* Constants */,
 				8EC69DCB24DCB41700FD8497 /* Managers */,
 				8EC69DC524DCB35400FD8497 /* Extensions */,
@@ -406,13 +411,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		8EC69DEB24DCC01100FD8497 /* APIClient */ = {
+		8EC69DEB24DCC01100FD8497 /* AbstractLayers */ = {
 			isa = PBXGroup;
 			children = (
 				8EC69DEC24DCC05300FD8497 /* APIClientType.swift */,
 				8EC69DF624DCC46300FD8497 /* MockApiClient.swift */,
+				8E28016A24F09C5D00890D44 /* CarFitUseCaseType.swift */,
 			);
-			path = APIClient;
+			path = AbstractLayers;
 			sourceTree = "<group>";
 		};
 		8EC69DEE24DCC0CD00FD8497 /* Constants */ = {
@@ -627,6 +633,7 @@
 				8EC69E1424DCC7D500FD8497 /* CFSchedulesResponseModel.swift in Sources */,
 				8E4FF18624E1BEFB008B30E2 /* Date.swift in Sources */,
 				8EC69DCD24DCB42900FD8497 /* LogsManager.swift in Sources */,
+				8E28016B24F09C5D00890D44 /* CarFitUseCaseType.swift in Sources */,
 				8E89F3EB24DF2D190099BB41 /* HomeListingUseCase.swift in Sources */,
 				8EA0EF7024E0BE2D002576D7 /* UIColor.swift in Sources */,
 				8EC69DC924DCB3A200FD8497 /* UITableView.swift in Sources */,
@@ -634,6 +641,7 @@
 				8EC69DF224DCC35700FD8497 /* Decodable.swift in Sources */,
 				8EED089824E2877700E5A5A4 /* UICollectionView.swift in Sources */,
 				8EC69D8624DCAC3300FD8497 /* AppDelegate.swift in Sources */,
+				8E28016524F0924800890D44 /* HomeTableViewCellModel.swift in Sources */,
 				8EC019AF24F052300081EACB /* Publisher.swift in Sources */,
 				8EC69DED24DCC05300FD8497 /* APIClientType.swift in Sources */,
 				8EC69DE724DCBFF100FD8497 /* DayCell.swift in Sources */,

@@ -11,11 +11,9 @@ import Foundation
 // MARK: - Manager for application logs
 
 /// Enhancement can be made to print pretty JSON for API request/ response/ error etc.
-struct LogsManager {
-    
-
+final class LogsManager {
     // MARK: - Function to print logs
-    
+
     static func printLog(_ value: Any) {
         if Environment.isLogEnabled {
             print(value)

@@ -63,6 +63,8 @@ class CalendarView: UIView {
         }).store(in: &cancellables)
     }
     
+    // MARK: - Function to refresh data on calender change.
+    
     private func refreshCollectionView() {
         monthAndYear.text = viewModel.monthAndYear
         daysCollectionView.reloadData()

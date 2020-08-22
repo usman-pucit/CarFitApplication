@@ -13,9 +13,11 @@ import XCTest
 class CarFitApplicationTests: XCTestCase {
     var viewModel: HomeViewModel!
     var cancellables: [AnyCancellable] = []
+    var useCase: CarFitUseCaseType!
     
     override func setUp() {
         viewModel = HomeViewModel(useCase: HomeListingUseCase())
+        useCase = HomeListingUseCase(apiClient: MockApiClient())
     }
     
     override func tearDown() {
@@ -31,7 +33,7 @@ class CarFitApplicationTests: XCTestCase {
     func testRequestFromMock() {
         let expectation = XCTestExpectation(description: "Date fetched")
         
-        let results = viewModel.jobSchedules(with: .mockFileName)
+        let results = useCase.jobSchedules(with: .mockFileName)
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
@@ -53,7 +55,7 @@ class CarFitApplicationTests: XCTestCase {
     func testRequestFailureWithWrongFileName() {
         let expectation = XCTestExpectation(description: "Date fetched failed")
         
-        let results = viewModel.jobSchedules(with: "")
+        let results = useCase.jobSchedules(with: "Test")
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
@@ -75,21 +77,18 @@ class CarFitApplicationTests: XCTestCase {
     func testMockRequestHandler() {
         let expectation = XCTestExpectation(description: "Request handler working properly")
         
+        let results = viewModel.jobSchedules(with: .mockFileName)
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
-        _ = viewModel.jobSchedules(with: .mockFileName)
-            .map({ (result) -> CFResult<[CFScheduleInformationModel]> in
-                switch result {
-                case .success(let jobs):
-                    expectation.fulfill()
-                    return .success(jobs)
-                case .failure(let error):
-                    XCTAssert(false, "Failed to fetch results")
-                    return .failure(error)
-                }
-            })
-            .eraseToAnyPublisher()
+        results.sink(receiveValue: { result in
+            switch result {
+            case .success:
+                expectation.fulfill()
+            case .failure:
+                XCTAssert(false, "Failed to fetch results")
+            }
+        }).store(in: &cancellables)
     }
     
     // MARK: Test error message
@@ -103,7 +102,7 @@ class CarFitApplicationTests: XCTestCase {
         cancellables.removeAll()
         
         _ = viewModel.jobSchedules(with: "")
-            .map({ (result) -> CFResult<[CFScheduleInformationModel]> in
+            .map({ (result) -> CFResult<[HomeTableViewCellModel]> in
                 
                 switch result {
                 case .success(let jobs):

@@ -6,10 +6,10 @@
 - Language: Swift
 - MVVM architecture with Combine & Coordinator pattern 
   [Reference link](https://developer.apple.com/documentation/combine)
-  
 - Coordinator pattern to manage application navigation.
-- APIClientType ( Currently for Mock API Services but can be extended for SOAP & Rest services).
-- UseCase Layer to handle all use cases of a Scene
+- APIClientType - Abstract layer for multipe request clients
+- CarFitUseCaseType - Abstract layer for multipe usecases
+- Builder - To build presentable datasource
 - Codables
 - MOCK scheme and environment.
 - Dependency Injections

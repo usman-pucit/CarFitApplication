@@ -9,7 +9,6 @@ import UIKit
 
 // MARK: - Class
 
-// UICollectionViewCell to show days of each month in calender view
 class DayCell: UICollectionViewCell {
     // MARK: - IBOutlets
 

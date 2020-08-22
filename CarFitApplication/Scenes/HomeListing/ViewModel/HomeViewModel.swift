@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: - Protocol
 
-// ViewModel Contract
+// Abstract methods
 protocol HomeViewModelType: class {
     associatedtype Output
     func jobSchedules(with fileName: String) -> Output
@@ -23,7 +23,7 @@ protocol HomeViewModelType: class {
 final class HomeViewModel {
     // MARK: Properties
 
-    private var dataSource: [CFScheduleInformationModel] = []
+    private var dataSource: [HomeTableViewCellModel] = []
     private var error: APIError?
     private var cancellables: [AnyCancellable] = []
     private var useCase: CarFitUseCaseType
@@ -36,7 +36,7 @@ final class HomeViewModel {
         return error?.rawValue
     }
 
-    subscript(rowValue atIndexPath: Int) -> CFScheduleInformationModel {
+    subscript(rowValue atIndexPath: Int) -> HomeTableViewCellModel {
         return dataSource[atIndexPath]
     }
 
@@ -54,20 +54,22 @@ final class HomeViewModel {
 
 extension HomeViewModel: HomeViewModelType {
     // Publisher
-    typealias Output = AnyPublisher<CFResult<[CFScheduleInformationModel]>, Never>
+    typealias Output = AnyPublisher<CFResult<[HomeTableViewCellModel]>, Never>
 
-    // MARK: - Function to fetch all job schedules with with mock response.
+    // MARK: - Function
 
-    func jobSchedules(with fileName: String) -> AnyPublisher<CFResult<[CFScheduleInformationModel]>, Never> {
+    /// fetching car wash job schedules
+
+    func jobSchedules(with fileName: String) -> AnyPublisher<CFResult<[HomeTableViewCellModel]>, Never> {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
 
         let outPut = useCase.jobSchedules(with: fileName)
-            .map({ (result) -> CFResult<[CFScheduleInformationModel]> in
+            .map({ (result) -> CFResult<[HomeTableViewCellModel]> in
                 switch result {
-                case .success(let jobs):
-                    self.dataSource = jobs
-                    return .success(jobs)
+                case .success(let jobSchedules):
+                    self.dataSource = self.viewModels(from: jobSchedules)
+                    return .success(self.viewModels(from: jobSchedules))
                 case .failure(let error):
                     self.error = error
                     return .failure(error)
@@ -77,4 +79,11 @@ extension HomeViewModel: HomeViewModelType {
 
         return Publishers.MergeMany(outPut).eraseToAnyPublisher()
     }
+    
+    private func viewModels(from jobSchedules: [CFScheduleInformationModel]) -> [HomeTableViewCellModel] {
+        return jobSchedules.map { (job) -> HomeTableViewCellModel in
+            return HomeTableViewCellModelBuilder.viewModel(from: job)
+        }
+    }
+
 }

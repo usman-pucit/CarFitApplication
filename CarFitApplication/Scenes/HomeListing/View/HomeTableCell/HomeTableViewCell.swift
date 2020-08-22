@@ -25,7 +25,7 @@ class HomeTableViewCell: UITableViewCell {
 
     // MARK: Properties
 
-    typealias Datasource = CFScheduleInformationModel
+    typealias Datasource = HomeTableViewCellModel
 
     // MARK: Life cycle
 
@@ -43,22 +43,13 @@ extension HomeTableViewCell: DatasourceType {
     // MARK: Function to update cell
 
     func updateCell(object: Datasource) {
-        if let tasksObj = object.tasks {
-            let title = tasksObj.map({ ($0.title ?? "") }).joined(separator: ",")
-            let timeInMinutes = tasksObj.map({ ($0.timesInMinutes ?? 0) }).reduce(0, +)
-            tasks.text = title
-            timeRequired.text = "\(timeInMinutes) min"
-        }
-        statusView.backgroundColor = object.statusColor
-        customer.text = (object.houseOwnerFirstName ?? "") + " " + (object.houseOwnerLastName ?? "")
-        var arrivalTimeString : String = object.startTimeUtc?.localTimeToUtcTime ?? ""
-        if let expectedTime = object.expectedTime{
-            arrivalTimeString = arrivalTimeString + " / " + expectedTime.replacingOccurrences(of: "/", with: "-")
-        }
-        arrivalTime.text = arrivalTimeString
-        status.text = object.visitState
-        destination.text = (object.houseOwnerAddress ?? "") + (object.houseOwnerZip ?? "") + (object.houseOwnerCity ?? "")
-        distance.text = "\(((object.houseOwnerLatitude ?? 0.0) + (object.houseOwnerLongitude ?? 0.0)).round(to: 1)) Km"
+        statusView.backgroundColor = object.statusViewColor
+        customer.text = object.customer
+        arrivalTime.text = object.arrivalTime
+        status.text = object.status
+        destination.text = object.destination
+        distance.text = object.distance
+        tasks.text = object.tasks
+        timeRequired.text = object.timeRequired
     }
 }
-
