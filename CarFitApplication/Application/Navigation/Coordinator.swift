@@ -8,9 +8,9 @@
 
 import UIKit
 
-// MARK: - Coordinator protocol
+// MARK: - Protocol
 
-// A protocol with Abstract methods
+/// Abstract functions for app navigation.
 protocol Coordinator {
     var navigationController: UINavigationController { get set }
     func start()

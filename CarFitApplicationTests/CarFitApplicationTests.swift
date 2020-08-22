@@ -11,19 +11,17 @@ import Combine
 import XCTest
 
 class CarFitApplicationTests: XCTestCase {
-    var viewModel: HomeViewModel!
+    var viewModel: CleanerListViewModel!
     var cancellables: [AnyCancellable] = []
     var useCase: CarFitUseCaseType!
     
     override func setUp() {
-        viewModel = HomeViewModel(useCase: HomeListingUseCase())
         useCase = HomeListingUseCase(apiClient: MockApiClient())
+        viewModel = CleanerListViewModel(useCase: useCase)
     }
     
     override func tearDown() {
         viewModel = nil
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
         super.tearDown()
     }
     
@@ -33,7 +31,7 @@ class CarFitApplicationTests: XCTestCase {
     func testRequestFromMock() {
         let expectation = XCTestExpectation(description: "Date fetched")
         
-        let results = useCase.jobSchedules(with: .mockFileName)
+        let results = viewModel.jobSchedules(with: .mockFileName)
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
@@ -43,7 +41,7 @@ class CarFitApplicationTests: XCTestCase {
             case .success:
                 expectation.fulfill()
             case .failure:
-                XCTAssert(false, "Failed to fetch results")
+                XCTAssert(false, "Failed")
             }
         }).store(in: &cancellables)
     }
@@ -55,7 +53,7 @@ class CarFitApplicationTests: XCTestCase {
     func testRequestFailureWithWrongFileName() {
         let expectation = XCTestExpectation(description: "Date fetched failed")
         
-        let results = useCase.jobSchedules(with: "Test")
+        let results = viewModel.jobSchedules(with: "Test")
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
@@ -63,21 +61,21 @@ class CarFitApplicationTests: XCTestCase {
             guard self != nil else { return }
             switch result {
             case .success:
-                XCTAssert(false, "Failed to fetch results")
+                XCTAssert(false, "Failed")
             case .failure:
                 expectation.fulfill()
             }
         }).store(in: &cancellables)
     }
     
-    // MARK: Test request function giving proper error with wrong file name.
+    // MARK: Test request handler
     
     /// Test must pass and fulfill expected results.
     
     func testMockRequestHandler() {
         let expectation = XCTestExpectation(description: "Request handler working properly")
         
-        let results = viewModel.jobSchedules(with: .mockFileName)
+        let results = useCase.jobSchedules(with: .mockFileName)
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
@@ -86,7 +84,7 @@ class CarFitApplicationTests: XCTestCase {
             case .success:
                 expectation.fulfill()
             case .failure:
-                XCTAssert(false, "Failed to fetch results")
+                XCTAssert(false, "Failed")
             }
         }).store(in: &cancellables)
     }
@@ -96,27 +94,54 @@ class CarFitApplicationTests: XCTestCase {
     /// Test error message is properly set
     
     func testErrorMessage() {
-        let expectation = XCTestExpectation(description: "Request handler working properly")
+        let expectation = XCTestExpectation(description: "Error message is properly set")
+        
+        let viewModel = CleanerListViewModel(useCase: HomeListingUseCase())
+        let results = viewModel.jobSchedules(with: "Wrong name")
         
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
-        _ = viewModel.jobSchedules(with: "")
-            .map({ (result) -> CFResult<[HomeTableViewCellModel]> in
-                
-                switch result {
-                case .success(let jobs):
-                    XCTAssert(false, "Failed to fetch results")
-                    return .success(jobs)
-                case .failure(let error):
-                    if error.rawValue == APIError.invalidResponse.rawValue {
-                        expectation.fulfill()
-                    } else {
-                        XCTAssert(false, "Failed to fetch results")
-                    }
-                    
-                    return .failure(error)
+        results.sink(receiveValue: { result in
+            
+            switch result {
+            case .success:
+                XCTAssert(false, "Failed")
+            case .failure:
+                if let errorMessage = viewModel.errorString, errorMessage == APIError.invalidResponse.rawValue {
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(false, "Failed")
                 }
-            }).eraseToAnyPublisher()
+            }
+        }).store(in: &cancellables)
+    }
+    
+    // MARK: Test number of rows
+    
+    /// Match number of rows with results
+    
+    func testNumberOfRows() {
+        let expectation = XCTestExpectation(description: "Number of rows are equal")
+        
+        let viewModel = CleanerListViewModel(useCase: HomeListingUseCase())
+        let results = viewModel.jobSchedules(with: .mockFileName)
+        
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+        
+        results.sink(receiveValue: { result in
+            
+            switch result {
+            case .success(let jobs):
+                if jobs.count == viewModel.numberOfRows {
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(false, "Failed")
+                }
+            case .failure:
+                XCTAssert(false, "Failed")
+            }
+        }).store(in: &cancellables)
     }
 }

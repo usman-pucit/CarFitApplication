@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: - Extension for UIViewController
+// MARK: - Extension
 
 extension UIViewController {
     
@@ -18,7 +18,7 @@ extension UIViewController {
         return "\(self)"
     }
     
-    // MARK: - Function to initiate UIViewController from a StoryBoard
+    // MARK: - Function to initiate UIViewController with a StoryBoard
     
     static func instantiate(fromAppStoryboard appStoryboard: AppStoryboard) -> Self {
         return appStoryboard.viewController(viewControllerClass: self)

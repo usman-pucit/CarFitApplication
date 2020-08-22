@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Protocol
 
-// A protocol with abstract methods
+// A protocol with abstract functions
 protocol DatasourceType {
     // MARK: - Properties
 

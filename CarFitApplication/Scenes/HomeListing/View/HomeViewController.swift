@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, AlertDisplayer {
     private let maxHeaderHeight: CGFloat = 200
     private let tableViewTop: CGFloat = 112.0
     private var cancellables: [AnyCancellable] = []
-    private var viewModel: HomeViewModel!
+    private var viewModel: CleanerListViewModel!
     
     // Refresh control for TableView
     lazy var refreshControl: UIRefreshControl = {
@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, AlertDisplayer {
         super.viewDidLoad()
         
         // Initialize view model with required dependency of APIClientType
-        self.viewModel = HomeViewModel(useCase: HomeListingUseCase())
+        self.viewModel = CleanerListViewModel(useCase: HomeListingUseCase())
         self.setupUI()
         self.bindViewModel()
     }
@@ -147,6 +147,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.lastContentOffset = scrollView.contentOffset.y
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         self.calendarButton.isEnabled = false
     }
     

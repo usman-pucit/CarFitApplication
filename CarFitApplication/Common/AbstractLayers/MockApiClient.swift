@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: MockApiClient
 
-// A concrete class with APIClientType
+// A concrete class
 
 final class MockApiClient: APIClientType {
     // MARK: - Function

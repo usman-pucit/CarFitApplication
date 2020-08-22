@@ -79,7 +79,7 @@ class CalendarView: UIView {
     }
 }
 
-// MARK: - Calendar collection view delegate and datasource methods
+// MARK: - Delegate & Datasource
 
 extension CalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

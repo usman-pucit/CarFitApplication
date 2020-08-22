@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  CleanerListViewModel.swift
 //  CarFitApplication
 //
 //  Created by Usman on 08/08/2020.
@@ -11,16 +11,17 @@ import Foundation
 
 // MARK: - Protocol
 
-// Abstract methods
-protocol HomeViewModelType: class {
+/// Abstract functions
+
+protocol CleanerListViewModelType: class {
     associatedtype Output
     func jobSchedules(with fileName: String) -> Output
 }
 
 // MARK: Class
 
-// ViewModel
-final class HomeViewModel {
+/// ViewModel
+final class CleanerListViewModel {
     // MARK: Properties
 
     private var dataSource: [HomeTableViewCellModel] = []
@@ -40,11 +41,10 @@ final class HomeViewModel {
         return dataSource[atIndexPath]
     }
 
-//    private var apiClient: APIClientType
 
     // MARK: Initializer
 
-    // Dependency of APIClient
+    /// Dependency of APIClient
     init(useCase: CarFitUseCaseType) {
         self.useCase = useCase
     }
@@ -52,20 +52,20 @@ final class HomeViewModel {
 
 // MARK: - Extension
 
-extension HomeViewModel: HomeViewModelType {
-    // Publisher
-    typealias Output = AnyPublisher<CFResult<[HomeTableViewCellModel]>, Never>
+extension CleanerListViewModel: CleanerListViewModelType {
+    /// Publisher
+    typealias Output = AnyPublisher<Result<[HomeTableViewCellModel], APIError>, Never>
 
     // MARK: - Function
 
     /// fetching car wash job schedules
 
-    func jobSchedules(with fileName: String) -> AnyPublisher<CFResult<[HomeTableViewCellModel]>, Never> {
+    func jobSchedules(with fileName: String) -> AnyPublisher<Result<[HomeTableViewCellModel], APIError>, Never> {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
 
         let outPut = useCase.jobSchedules(with: fileName)
-            .map({ (result) -> CFResult<[HomeTableViewCellModel]> in
+            .map({ (result) -> Result<[HomeTableViewCellModel], APIError> in
                 switch result {
                 case .success(let jobSchedules):
                     self.dataSource = self.viewModels(from: jobSchedules)
@@ -79,11 +79,10 @@ extension HomeViewModel: HomeViewModelType {
 
         return Publishers.MergeMany(outPut).eraseToAnyPublisher()
     }
-    
+
     private func viewModels(from jobSchedules: [CFScheduleInformationModel]) -> [HomeTableViewCellModel] {
         return jobSchedules.map { (job) -> HomeTableViewCellModel in
-            return HomeTableViewCellModelBuilder.viewModel(from: job)
+            HomeTableViewCellModelBuilder.viewModel(from: job)
         }
     }
-
 }

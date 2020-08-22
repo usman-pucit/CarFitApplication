@@ -17,19 +17,10 @@ enum APIError: String, Error {
     case invalidResponse = "Invalid response"
 }
 
-// MARK: - Enum
-
-/// Enum for handling values and data results in a correct way.
-
-enum CFResult<Value> {
-    case success(Value)
-    case failure(APIError)
-}
-
 // MARK: - APIClientType protocol
 
-/// An Abstract methods protocol to setup multiple environments.
-/// It can be injected with a single dependency to perform requests on like Mock and SOAP/REST environments.
+/// Abstract functions for different environments.
+/// Can be injected with DI to work with Mock and SOAP/REST etc  environments.
 
 protocol APIClientType {
     @discardableResult

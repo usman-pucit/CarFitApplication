@@ -22,15 +22,7 @@ extension UICollectionView {
     }
     
     // MARK: - Function dequeue cell
-    
-    func dequeueCell<T: UICollectionViewCell>(_: T.Type, for indexPath: IndexPath) -> T {
-        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
-        }
-        
-        return cell
-    }
-    
+
     func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Unable to Dequeue Reusable Table View Cell")
