@@ -4,8 +4,8 @@
 
 ### Main Components:
 - Language: Swift
-- MVVM architecture with Combine & Coordinator pattern 
-  [Combine](https://developer.apple.com/documentation/combine)
+- MVVM architecture with [Combine](https://developer.apple.com/documentation/combine) & Coordinator pattern 
+  
 - Coordinator pattern to manage application navigation.
 - APIClientType - Abstract layer for multipe request clients
 - CarFitUseCaseType - Abstract layer for multipe usecases
