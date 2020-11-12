@@ -1,18 +1,17 @@
 # CarFit Application
 
-# Release Notes 
+# Important Notes 
 
-### Main Components:
+### Components:
 - Language: Swift
 - MVVM architecture with [Combine](https://developer.apple.com/documentation/combine) & Coordinator pattern 
-  
-- Coordinator pattern to manage application navigation.
+- Coordinator
 - APIClientType - Abstract layer for multipe request clients
 - CarFitUseCaseType - Abstract layer for multipe usecases
-- Builder - To build presentable datasource
+- Builder layer
 - Codables
-- MOCK scheme and environment.
-- Dependency Injections
+- Additional MOCK scheme and environment.
+- DI 
 - Unit testing for ViewModel's
 
 ### Focused Areas are:
@@ -20,15 +19,15 @@
 - SOLID principles
 - Application architecture 
 - Design patterns 
-- Testability, Scalability and reusable code. That is easy to understand and extend. 
-- MVVM with Combine(Apple's native reactive programming framework) to get data stream and propagation of changes at one place.
+- Testability, Scalability and reusable code. That is easy to understand and extend.
+- MVVM with Combine
 
 ### Improvement & Enhancement Areas:
 
 - Test coverage including UI testing. 
 - More schemes and environments as per need.
-- Network layer and data security layer.
-- TableView and CollectionView can be extended to a generic datasource to achieve complete reusability.
+- Enhancement with Reactive cocoa & Reactive Coordinator
+- Generic datasource
 
 
 
